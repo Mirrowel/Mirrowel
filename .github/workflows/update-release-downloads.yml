@@ -17,9 +17,7 @@ jobs:
       # Select which repos to count (space/newline/comma separated ok)
       REPOS: >
         Mirrowel/FDDA-enhanced-animations-Food-n-Drinks
-        Mirrowel/FDDA-Enhanced-animations-medical
         Mirrowel/Mirrowels-BHS-Edits
-        Mirrowel/Return-Menu-Music
         Mirrowel/LLM-API-Key-Proxy
         danclave/TALKER
 
