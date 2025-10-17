@@ -1,0 +1,73 @@
+name: Update release downloads badge
+
+on:
+  schedule:
+    - cron: "0 0 * * *"  # every day at 00:00 UTC
+    # - cron: "0 */12 * * *"  # every 12 hours
+  workflow_dispatch:
+
+# For committing JSON to the repo (Option B)
+permissions:
+  contents: write
+
+jobs:
+  compute-downloads:
+    runs-on: ubuntu-latest
+    env:
+      # Select which repos to count (space/newline/comma separated ok)
+      REPOS: >
+        Mirrowel/FDDA-enhanced-animations-Food-n-Drinks
+        Mirrowel/FDDA-Enhanced-animations-medical
+        Mirrowel/Mirrowels-BHS-Edits
+        Mirrowel/Return-Menu-Music
+        Mirrowel/LLM-API-Key-Proxy
+        danclave/TALKER
+
+      # Include pre-releases? "true" or "false"
+      INCLUDE_PRERELEASES: "false"
+
+      # Shields endpoint JSON written to repo (Option B)
+      REPO_BADGE_ENABLED: "true"
+      BADGE_JSON_PATH: badges/downloads-total.json
+      BADGE_LABEL: "release downloads"
+      BADGE_COLOR: "blue"
+
+      # Gist publishing (Option E)
+      GIST_BADGE_ENABLED: "false"     # set to "true" to enable Gist output
+      GIST_ID: ""                     # e.g. "a1b2c3d4e5f6g7h8i9j0"
+      GIST_FILENAME: "downloads-total.json"
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Install deps
+        run: pip install requests
+
+      - name: Compute and publish downloads
+        run: python scripts/release_downloads.py
+        env:
+          # GITHUB_TOKEN is used for GitHub REST API to fetch release data.
+          # Automatically provided – sufficient for reading repo data.
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+          # For Gist publishing (Option E), create a PAT with "gist" scope only
+          # and add it as a repo secret named GIST_TOKEN
+          # GIST_TOKEN: ${{ secrets.GIST_TOKEN }}
+
+      - name: Commit badge JSON if changed (Option B)
+        if: env.REPO_BADGE_ENABLED == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "${BADGE_JSON_PATH}"
+          if git diff --staged --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "chore(badges): update release downloads badge"
+            git push
+          fi
