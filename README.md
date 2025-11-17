@@ -26,46 +26,62 @@ I like building small, practical systems that are easy to run, extend, and learn
 ---
 
 ## TL;DR
-Python/TS developer focused on small, reliable systems. Highlights: Mirrobot (Discord AI assistant), LLM‑API‑Key‑Proxy (my “star” project), and ImaginAI (interactive fiction platform, WIP). Open to junior/mid roles, contract work, and collaborations.
+Python/TS developer focused on small, reliable systems. Highlights: Mirrobot (Discord AI assistant), LLM-API-Key-Proxy (my "star" project), and ImaginAI (interactive fiction platform, WIP). Open to junior/mid roles, contract work, and collaborations.
 
 ---
 
 ## What I build (at a glance)
 - Developer tooling that stays simple to deploy and operate
-- Integrations and middleware that de‑risk provider choices
+- Integrations and middleware that de-risk provider choices
 - Bots and automation for communities (Discord assistance, moderation, support)
 - Lightweight web apps and interactive experiences
 - Modding/release utilities (uploaders, manifests, small GUIs)
 
-I like clear docs, .env‑first configuration, and observability that helps you debug under real‑world conditions.
+I like clear docs, .env-first configuration, and observability that helps you debug under real-world conditions.
 
 ---
 
 ## Spotlight projects
 
 ### Mirrobot — Discord AI assistant for tech support + moderation
-- What: An AI/LLM‑integrated Discord assistant for server support, inline Q&A, pattern‑based help, and moderation utilities (thread cleanup, role‑aware permissions).
+- What: An AI/LLM-integrated Discord assistant for server support, inline Q&A, pattern-based help, and moderation utilities (thread cleanup, role-aware permissions).
 - Role: I maintain the codebase and own key features (AI chat, response/config system, permissions, thread management).
-- Tech: Python, discord.py, asyncio; environment‑based config; per‑guild settings.
+- Tech: Python, discord.py, asyncio; environment-based config; per-guild settings.
 - Repo: https://github.com/Mirrowel/Mirrobot-py  
 <!-- short demo GIF/screenshot here -->
 <!-- <img src="https://your.cdn/demo/mirrobot.gif" alt="Mirrobot demo" width="600"/> -->
 
-### LLM‑API‑Key‑Proxy — OpenAI‑compatible proxy + resilience library
-- What: A self‑hosted proxy exposing a single OpenAI‑style API while managing provider keys, per‑model cooldowns, retries, and detailed logging. Designed to be provider‑agnostic and easy to test locally (Windows EXE included).
+### LLM-API-Key-Proxy — OpenAI-compatible proxy + resilience library
+- What: A self-hosted proxy exposing a single OpenAI-style API while managing provider keys, per-model cooldowns, retries, and detailed logging. Designed to be provider-agnostic and easy to test locally.
 - Role: Author/maintainer; built the core key selection/cooldown logic and request tracing.
-- Tech: Python, FastAPI, litellm; OpenAI‑compatible endpoints.
+- Tech: Python, FastAPI, litellm; OpenAI-compatible endpoints.
 - Repo: https://github.com/Mirrowel/LLM-API-Key-Proxy  
 <!-- short architecture diagram/GIF -->
 <!-- <img src="https://your.cdn/demo/proxy-arch.png" alt="LLM Proxy architecture" width="600"/> -->
 
-### ImaginAI — Scenario‑driven interactive fiction platform (WIP, main focus)
-- What: A scenario‑based interactive fiction platform where player actions drive LLM‑generated storylines. The platform centers on:
-  - Scenario Templates (plot essentials, AI instructions, “cards” for characters/locations/items)
+### Mirrobot-agent — AI-powered GitHub automation
+- What: A GitHub Actions-based bot for automated issue analysis, PR reviews, and documentation generation. Features intelligent code reviews with high-signal feedback, context-aware responses, and support for custom LLM providers.
+- Role: Author/maintainer; designed the workflow architecture, evaluation system, and OpenCode integration.
+- Tech: Python, GitHub Actions, OpenCode; composite actions for reusability; LLM-as-judge evaluation.
+- Repo: https://github.com/Mirrowel/Mirrobot-agent  
+<!-- short workflow diagram/GIF -->
+<!-- <img src="https://your.cdn/demo/mirrobot-agent.gif" alt="Mirrobot-agent demo" width="600"/> -->
+
+### Mirrobench — Comprehensive LLM benchmarking platform
+- What: A web-based benchmarking system for evaluating LLMs across 27 project-level questions spanning quality, speed, cost, and capabilities. Features interactive leaderboards, real-time progress tracking, and multiple evaluation methods (LLM-as-judge, code execution, comparative analysis).
+- Role: Author/maintainer; built the evaluation engine, Vue.js web interface, and multi-provider support system.
+- Tech: Python, FastAPI, Vue.js 3, litellm; async execution with provider-specific concurrency; artifact extraction and visualization.
+- Repo: https://github.com/Mirrowel/Mirrobench  
+<!-- short benchmark UI screenshot/GIF -->
+<!-- <img src="https://your.cdn/demo/mirrobench.gif" alt="Mirrobench demo" width="600"/> -->
+
+### ImaginAI — Scenario-driven interactive fiction platform (WIP, main focus)
+- What: A scenario-based interactive fiction platform where player actions drive LLM-generated storylines. The platform centers on:
+  - Scenario Templates (plot essentials, AI instructions, "cards" for characters/locations/items)
   - Adventures as snapshots of scenarios (editable turns, retry/continue, local persistence)
   - A Python backend with a REST API and PostgreSQL database, plus a web frontend — all integrating the same LLM Proxy library for provider flexibility
-- Vision: Grow into a small commercial IF platform — approachable authoring tools, smooth play sessions, and (future) multi‑user features. Mod‑friendly and portable by design.
-- Status: Current repo runs browser‑first; Python REST backend with PostgreSQL is in progress; the LLM proxy is the integration backbone.
+- Vision: Grow into a small commercial IF platform — approachable authoring tools, smooth play sessions, and (future) multi-user features. Mod-friendly and portable by design.
+- Status: Current repo runs browser-first; Python REST backend with PostgreSQL is in progress; the LLM proxy is the integration backbone.
 - Repo: https://github.com/Mirrowel/ImaginAI  
 <!-- short gameplay GIF/screenshot here -->
 <!-- <img src="https://your.cdn/demo/imaginai.gif" alt="ImaginAI demo" width="600"/> -->
@@ -73,14 +89,14 @@ I like clear docs, .env‑first configuration, and observability that helps you 
 #### Contributions & maintenance
 - TALKER (S.T.A.L.K.E.R. Anomaly mod) — currently the main maintainer; ensure compatibility and integrations (pairs nicely with the LLM Proxy).  
   https://github.com/danclave/TALKER
-- QuizGard — university engineering project; I implemented the WebSocket layer (real‑time connectivity and main game logic integration).  
+- QuizGard — university engineering project; I implemented the WebSocket layer (real-time connectivity and main game logic integration).  
   Note: private repository; code is closed per license (I retain access).
 
 ---
 
 ## Try it locally / quick links
 
-- LLM‑API‑Key‑Proxy
+- LLM-API-Key-Proxy
   - OpenAI client:
     ```python
     import openai
@@ -100,7 +116,13 @@ I like clear docs, .env‑first configuration, and observability that helps you 
     ```
 
 - Mirrobot
-  - Quick start: set bot token and AI provider via .env/config, invite bot, configure per‑guild settings, run main.py. See repo README and /docs for commands and examples.
+  - Quick start: set bot token and AI provider via .env/config, invite bot, configure per-guild settings, run main.py. See repo README and /docs for commands and examples.
+
+- Mirrobot-agent
+  - Quick start: configure GitHub App credentials and LLM API keys as repository secrets, activate workflows. Mention @mirrobot-agent in issues/PRs or use `/mirrobot-review` command.
+
+- Mirrobench
+  - Quick start: install dependencies, configure API keys in .env, run `python viewer/server.py`, open http://localhost:8000. Use web interface to configure models and start benchmarks.
 
 - ImaginAI
   - Current repo runs in the browser (see README for .env). Backend (Python REST + PostgreSQL) is in progress and will sit behind the LLM Proxy.
@@ -109,56 +131,56 @@ I like clear docs, .env‑first configuration, and observability that helps you 
 
 ## Skills & tools
 - Languages: Python, TypeScript/JavaScript, Lua
-- Backend & systems: FastAPI, REST/WS, asyncio, real‑time features
-- Web: Vite, React, vanilla TS apps
-- Bots & automation: discord.py, moderation helpers, server utilities
-- Integrations: OpenAI‑compatible APIs, Gemini/Gemma via litellm, provider‑agnostic middleware
+- Backend & systems: FastAPI, REST/WS, asyncio, real-time features
+- Web: Vite, React, Vue.js, vanilla TS apps
+- Bots & automation: discord.py, GitHub Actions, moderation helpers, server utilities
+- Integrations: OpenAI-compatible APIs, Gemini/Gemma via litellm, provider-agnostic middleware
 - Tooling: release uploaders, manifests, small desktop GUIs (Tkinter/CustomTkinter)
-- Practices: .env‑driven config, logging/observability, tidy docs and deployment guides
+- Practices: .env-driven config, logging/observability, tidy docs and deployment guides
 
-Note: While many repos here involve LLMs, I’m not limited to that space — I enjoy general backend work, real‑time systems, and practical tooling.
+Note: While many repos here involve LLMs, I'm not limited to that space — I enjoy general backend work, real-time systems, and practical tooling.
 
 ---
 
 ## Other game mods (S.T.A.L.K.E.R. Anomaly)
-- Scripts & game systems: Lua scripting for in‑game logic and systems behavior.
+- Scripts & game systems: Lua scripting for in-game logic and systems behavior.
 - Assets integrated: textures, models, animations (sourced from other mods/creators; integration and configuration on my side).
-- Focus: features that feel cohesive in‑game and are friendly to maintain.
+- Focus: features that feel cohesive in-game and are friendly to maintain.
 
 ---
 
 ## Values & approach
-- Practical resilience: build tooling that keeps running under real‑world conditions (key rotation, per‑model cooldowns, detailed logging).
-- Interoperability: open, provider‑agnostic interfaces (OpenAI‑compatible proxy, modular providers).
-- Community‑first: tools for modders, server admins, and creators — from automated release uploaders to in‑game dialogue AI.
-- How I work: prefer small, well‑documented modules, and clear “how to run it” guides.
+- Practical resilience: build tooling that keeps running under real-world conditions (key rotation, per-model cooldowns, detailed logging).
+- Interoperability: open, provider-agnostic interfaces (OpenAI-compatible proxy, modular providers).
+- Community-first: tools for modders, server admins, and creators — from automated release uploaders to in-game dialogue AI.
+- How I work: prefer small, well-documented modules, and clear "how to run it" guides.
 
 ---
 
 ## Now
-- 🔭 I’m currently working on
+- 🔭 I'm currently working on
   - ImaginAI: backend (Python REST + PostgreSQL), authoring tools, and gameplay UX; integrating the LLM Proxy across services.
   - [Codexia (prototyping)](https://gist.github.com/Mirrowel/7bfb15ac257d7f154fc42f256f2d6964): a self‑hostable AI agent for GitHub repositories (daemon + orchestrator + sub‑agents), with focus on resilience, sandboxing, and auditable transcripts.
 
-- 🌱 I’m currently learning
+- 🌱 I'm currently learning
   - Postgres schema design and migration workflows; REST API design for authoring/playback flows.
   - Production hardening for containerized agents: Docker sandboxing, network whitelisting, resource limits.
   - Observability stacks and structured logging for small services.
   - Persona/permissions systems, hierarchical config, and resumable agent runs.
   - Frontend UX for scenario editors and story playback; a bit more React/Vite ergonomics.
 
-- 👯 I’m looking to collaborate on
-  - ImaginAI: gameplay UX, scenario editor polish, persistence design, and (future) multi‑user/playtesting.
+- 👯 I'm looking to collaborate on
+  - ImaginAI: gameplay UX, scenario editor polish, persistence design, and (future) multi-user/playtesting.
   - Codexia: daemon orchestration, GitHub API tooling, action packaging, and sandbox/security policies.
 
-- 🤔 I’m looking for help with
+- 🤔 I'm looking for help with
   - ImaginAI: playtesting, feedback on authoring flows, and ideas for scenario/card formats.
   - Codexia: best practices for container networking policies, circuit breakers, and checkpoint/resume strategies.
 
 ---
 
 ## Availability
-Open to opportunities and collaborations (junior/mid roles, contract work). If you’re building with LLMs, bots, interactive systems, or just want reliable glue code and tooling, I’m happy to help.
+Open to opportunities and collaborations (junior/mid roles, contract work). If you're building with LLMs, bots, interactive systems, or just want reliable glue code and tooling, I’m happy to help.
 
 ## Contact
 Reach out via GitHub issues in my repos for project questions or collaborations. You can also find me on:
@@ -173,6 +195,5 @@ Reach out via GitHub issues in my repos for project questions or collaborations.
 </p>
 
 <!-- Notes:
-- CV is not public; I’m happy to share privately upon request.
+- CV is not public; I'm happy to share privately upon request.
 -->
-
